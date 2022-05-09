@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled, { useTheme } from "styled-components/native";
 
 import { CustomThemeProps, ThemeType } from "../../infrastructure/theme";
 
@@ -11,11 +11,6 @@ const sizeVariants = {
   large: 3,
 };
 
-interface Props extends CustomThemeProps {
-  position: Position;
-  size: Size;
-}
-
 const getVariant = (position: Position, size: Size, theme: ThemeType) => {
   const sizeIndex = sizeVariants[size];
   const value = theme.space[sizeIndex];
@@ -24,11 +19,28 @@ const getVariant = (position: Position, size: Size, theme: ThemeType) => {
   return `${property}:${value}`;
 };
 
-export const Spacer = styled.View<Props>`
-  ${({ position, size, theme }) => getVariant(position, size, theme)}
+interface ViewProps extends CustomThemeProps {
+  variant: string;
+}
+
+const SpacerView = styled.View<ViewProps>`
+  ${({ variant }) => variant}
 `;
 
-Spacer.defaultProps = {
-  position: "top",
-  size: "small",
+interface Props {
+  position: Position;
+  size: Size;
+  children: JSX.Element;
+}
+
+export const Spacer: React.FC<Props> = ({
+  position = "top",
+  size = "small",
+  children,
+}) => {
+  const theme = useTheme();
+
+  const variant = getVariant(position, size, theme as ThemeType);
+
+  return <SpacerView variant={variant}>{children}</SpacerView>;
 };
