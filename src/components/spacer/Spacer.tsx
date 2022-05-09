@@ -30,7 +30,6 @@ const SpacerView = styled.View<ViewProps>`
 interface Props {
   position: Position;
   size: Size;
-  children: JSX.Element;
 }
 
 export const Spacer: React.FC<Props> = ({
