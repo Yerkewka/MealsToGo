@@ -3,8 +3,8 @@ import { SvgXml } from "react-native-svg";
 import { Restaurant } from "../../../models/restaurant";
 import starSVG from "../../../../assets/star";
 import openSVG from "../../../../assets/open";
-import { Spacer } from "../../../components/spacer/Spacer";
-import { Text } from "../../../components/typography/Text";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 
 import {
   RestaurantCard,
