@@ -1,9 +1,9 @@
 import camelize from "camelize-ts";
 
-import { Location, MapPoint } from "../../models/location";
+import { Location } from "../../models/location";
 import { locations } from "./mock/locations.mock";
 
-export const getLocation = (searchTerm: string): Promise<MapPoint> => {
+export const getLocation = (searchTerm: string): Promise<Location> => {
   return new Promise((resolve, reject) => {
     const location = locations[searchTerm];
 
@@ -11,10 +11,6 @@ export const getLocation = (searchTerm: string): Promise<MapPoint> => {
       reject("Not found");
     }
 
-    return resolve(transformLocation(location.results[0]));
+    return resolve(camelize(location.results[0]));
   });
-};
-
-const transformLocation = (location: Location) => {
-  return camelize(location).geometry.location;
 };

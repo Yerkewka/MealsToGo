@@ -14,6 +14,7 @@ import { theme } from "./src/infrastructure/theme";
 // Context providers
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationsContextProvider } from "./src/services/locations/locations.context";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 
 // Navigation
 import { Navigation } from "./src/infrastructure/navigation";
@@ -30,16 +31,18 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <LocationsContextProvider>
-        <RestaurantsContextProvider>
-          <ThemeProvider theme={theme}>
-            <PaperProvider>
-              <Navigation />
-              <ExpoStatusBar style="auto" />
-            </PaperProvider>
-          </ThemeProvider>
-        </RestaurantsContextProvider>
-      </LocationsContextProvider>
+      <FavouritesContextProvider>
+        <LocationsContextProvider>
+          <RestaurantsContextProvider>
+            <ThemeProvider theme={theme}>
+              <PaperProvider>
+                <Navigation />
+                <ExpoStatusBar style="auto" />
+              </PaperProvider>
+            </ThemeProvider>
+          </RestaurantsContextProvider>
+        </LocationsContextProvider>
+      </FavouritesContextProvider>
     </NavigationContainer>
   );
 }

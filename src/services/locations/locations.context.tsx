@@ -1,11 +1,11 @@
 import { createContext, useEffect, useState, useCallback } from "react";
 
-import { MapPoint } from "../../models/location";
+import { Location } from "../../models/location";
 import { getLocation } from "./locations.service";
 
 interface LocationsContext {
   searchTerm: string;
-  location: MapPoint | null;
+  location: Location | null;
   isLoading: boolean;
   error: string;
   search: (keyword: string) => void;
@@ -22,7 +22,7 @@ export const LocationsContext = createContext<LocationsContext>({
 export const LocationsContextProvider: React.FC = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState<string>("san francisco");
 
-  const [location, setLocation] = useState<MapPoint | null>(null);
+  const [location, setLocation] = useState<Location | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 

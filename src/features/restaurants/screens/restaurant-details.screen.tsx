@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { ScrollView } from "react-native";
 import { List } from "react-native-paper";
@@ -9,13 +8,9 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 
 import { RestaurantStackParamsList } from "../../../infrastructure/navigation/restaurants.navigator";
 
-const Title = styled.Text``;
-
 type Props = NativeStackScreenProps<RestaurantStackParamsList, "Details">;
 
 export const RestaurantDetailsScreen: React.FC<Props> = ({ route }) => {
-  const [activeTab, setActiveTab] = useState<number | null>(null);
-
   return (
     <SafeArea>
       <RestaurantInfoCard restaurant={route.params.restaurant} />
