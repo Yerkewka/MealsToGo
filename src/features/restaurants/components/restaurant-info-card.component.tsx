@@ -5,6 +5,7 @@ import starSVG from "../../../../assets/star";
 import openSVG from "../../../../assets/open";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 import {
   RestaurantCard,
@@ -18,10 +19,10 @@ import {
 } from "./restaurant-info-card.styles";
 
 interface Props {
-  restaurant?: Restaurant;
+  restaurant: Restaurant;
 }
 
-export const RestaurantInfoCard: React.FC<Props> = ({ restaurant = {} }) => {
+export const RestaurantInfoCard: React.FC<Props> = ({ restaurant }) => {
   const {
     name = "Some restaurant",
     icon = "https://previews.123rf.com/images/sumberejeki/sumberejeki2007/sumberejeki200702595/151907453-.jpg",
@@ -38,6 +39,7 @@ export const RestaurantInfoCard: React.FC<Props> = ({ restaurant = {} }) => {
 
   return (
     <RestaurantCard elevation={5}>
+      <Favourite restaurant={restaurant} />
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <RestaurantCardContent>
         <Text>{name}</Text>

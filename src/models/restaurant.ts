@@ -1,4 +1,7 @@
-export interface Restaurant {
+import { Location } from "./location";
+
+export interface Restaurant extends Location {
+  placeId: string;
   name: string;
   icon: string;
   address: string;
